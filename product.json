@@ -1,0 +1,38 @@
+{
+  "id": "868597",
+  "name": "Смартфон Samsung Galaxy",
+  "description": "Детальное описание смартфона Samsung Galaxy, включая особенности, технические характеристики и преимущества.",
+  "price": 699,
+  "category": "Смартфоны",
+  "images": [
+    "url_to_main_image.jpg",
+    "url_to_additional_image1.jpg",
+    "url_to_additional_image2.jpg"
+  ],
+  "specifications": {
+    "display": "6.5 дюймов, 1080 x 2400 пикселей",
+    "processor": "Exynos 990",
+    "ram": "8 GB",
+    "storage": "128 GB",
+    "camera": "12 MP + 64 MP + 12 MP, фронтальная камера 10 MP",
+    "battery": "4500 mAh",
+    "os": "Android"
+  },
+  "ratings": {
+    "average": 4.6,
+    "totalReviews": 120
+  },
+  "reviews": [
+    {
+      "post_id": "123aljsf",
+      "user_id": "12947jif",
+      "created_at": "13.10.2024",
+      "body": "test"
+    }
+  ],
+  "availability": {
+    "inStock": true,
+    "quantity": 50
+  },
+  "tags": ["смартфон", "Samsung", "Galaxy", "Android"]
+}
