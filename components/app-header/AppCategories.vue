@@ -1,7 +1,10 @@
 <template>
   <div class="wrapper margin">
     <div class="flex items-center space-x-10 justify-center">
-      <div class="flex flex-col items-center justify-center cursor-pointer">
+      <div
+        @click="openCategoryPage('laptops')"
+        class="flex flex-col items-center justify-center cursor-pointer"
+      >
         <div class="category-card_box">
           <img
             class="category-card_img"
@@ -13,7 +16,10 @@
         <span class="category-card_title">Laptops</span>
       </div>
 
-      <div class="flex flex-col items-center justify-center cursor-pointer">
+      <div
+        @click="openCategoryPage('phones')"
+        class="flex flex-col items-center justify-center cursor-pointer"
+      >
         <div class="category-card_box">
           <img
             class="category-card_img"
@@ -25,7 +31,10 @@
         <span class="category-card_title">Phones</span>
       </div>
 
-      <div class="flex flex-col items-center justify-center cursor-pointer">
+      <div
+        @click="openCategoryPage('pc')"
+        class="flex flex-col items-center justify-center cursor-pointer"
+      >
         <div class="category-card_box">
           <img
             class="category-card_img"
@@ -37,7 +46,10 @@
         <span class="category-card_title">PC</span>
       </div>
 
-      <div class="flex flex-col items-center justify-center cursor-pointer">
+      <div
+        @click="openCategoryPage('accesories')"
+        class="flex flex-col items-center justify-center cursor-pointer"
+      >
         <div class="category-card_box">
           <img
             class="category-card_img"
@@ -49,7 +61,10 @@
         <span class="category-card_title">Accesories</span>
       </div>
 
-      <div class="flex flex-col items-center justify-center cursor-pointer">
+      <div
+        @click="openCategoryPage('tablets')"
+        class="flex flex-col items-center justify-center cursor-pointer"
+      >
         <div class="category-card_box">
           <img
             class="category-card_img"
@@ -61,7 +76,10 @@
         <span class="category-card_title">Tablets</span>
       </div>
 
-      <div class="flex flex-col items-center justify-center cursor-pointer">
+      <div
+        @click="openCategoryPage('watches')"
+        class="flex flex-col items-center justify-center cursor-pointer"
+      >
         <div class="category-card_box">
           <img
             class="category-card_img"
@@ -76,4 +94,16 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const router = useRouter();
+
+const openCategoryPage = (category: string) => {
+  saveCategoryToLocalStorage(category);
+  setPageLayout("category-layout");
+  router.push(`/category/${category}`);
+};
+
+const saveCategoryToLocalStorage = (category: string) => {
+  localStorage.setItem("category", category);
+};
+</script>

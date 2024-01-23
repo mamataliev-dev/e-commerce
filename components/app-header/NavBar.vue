@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-main h-16 text-white p-2">
+  <nav class="relative bg-main h-16 text-white p-2">
     <div class="wrapper">
       <div class="flex items-center justify-between">
         <NuxtLink to="/">
@@ -7,27 +7,9 @@
         </NuxtLink>
 
         <div class="flex items-center space-x-3">
-          <button class="flex space-x-2 py-2 px-4 rounded-md bg-white">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="purple"
-              class="w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-
-            <span class="text-[#800080] font-semibold"> Catalog </span>
-          </button>
-
-          <form @submit.prevent="searchItem" class="flex items-center">
+          <form @submit.prevent="searchProduct" class="flex items-center">
             <input
+              v-model="query"
               class="w-[500px] rounded-tl-md rounded-bl-md py-2 px-3.5 outline-none text-black"
               type="text"
               placeholder="Search product..."
@@ -53,23 +35,22 @@
 
         <ul class="flex items-center space-x-3">
           <li>
-            <NuxtLink to="/">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-                />
-              </svg>
-            </NuxtLink>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
+              />
+            </svg>
           </li>
+
           <li>
             <NuxtLink to="/">
               <svg
@@ -88,22 +69,27 @@
               </svg>
             </NuxtLink>
           </li>
+
           <li>
-            <NuxtLink to="/">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
+            <NuxtLink to="/profile/orders">
+              <div v-if="!userImage" class="flex items-center space-x-2">
+                <img
+                  class="h-8 object-contain rounded-lg"
+                  src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
+                  alt=""
                 />
-              </svg>
+
+                <span>Sign up</span>
+              </div>
+
+              <div v-else="userImage" class="flex items-center space-x-2">
+                <img
+                  class="h-8 object-contain rounded-lg"
+                  :src="`https://eihzdapuwwdmctwiskdb.supabase.co/storage/v1/object/public/images/${id}/${userImage}`"
+                />
+
+                <span>{{ userDisplayName }}</span>
+              </div>
             </NuxtLink>
           </li>
         </ul>
@@ -113,5 +99,34 @@
 </template>
 
 <script setup lang="ts">
-let searchItem = ref("");
+import { useGetUserData } from "~/stores/getUserData";
+import { useGetUserImage } from "~/stores/getUserImage";
+
+const searchProduct = () => {
+  console.log("query");
+};
+
+const userId = useSupabaseUser();
+const id = userId.value?.id;
+const store = useGetUserData();
+const user = ref(store.userData[0] || {});
+const userDisplayName = ref(user.value.user_name);
+
+const image = useGetUserImage();
+const userImage = ref(image.userImage);
+
+console.log(userId);
+
+watchEffect(() => {
+  user.value = store.userData[0] || {};
+  userImage.value = image.userImage;
+  userDisplayName.value = user.value.user_name;
+});
+
+onMounted(() => {
+  store.getUserData();
+  user.value = store.userData[0];
+  image.getUserImageUrl();
+  userImage.value = image.userImage;
+});
 </script>

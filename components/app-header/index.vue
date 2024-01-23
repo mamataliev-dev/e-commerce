@@ -1,9 +1,9 @@
 <template>
   <header>
     <AppHeaderNavBar />
-    
+
     <div class="wrapper">
-      <AppHeaderAppBaner />
+      <AppHeaderAppBanner />
       <AppHeaderAppCategories />
     </div>
   </header>

@@ -1,5 +1,7 @@
 <template>
-  <AppHeader />
+  <AppHeaderNavBar />
+
   <slot />
+
   <AppFooter />
 </template>

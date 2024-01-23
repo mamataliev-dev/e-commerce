@@ -1,5 +1,5 @@
 <template>
-  <AppHeader />
+  <AuthHeader />
   <slot />
   <AppFooter />
 </template>

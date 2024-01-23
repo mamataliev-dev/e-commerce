@@ -17,6 +17,7 @@ export default {
       red: "#DA002B",
       gray: "#d1d5db",
       borderGray: "#8b8b8b",
+      grayLight: "#F2F2F2",
       white: "#ffffff",
     },
     extend: {},
