@@ -78,11 +78,11 @@ let userPassword = ref("");
 let emailEmpty = ref(false);
 let passwordEmpty = ref(false);
 
-// watchEffect(() => {
-//   if (user.value) {
-//     navigateTo("/profile/settings");
-//   }
-// });
+watchEffect(() => {
+  if (user.value) {
+    navigateTo("/profile/settings");
+  }
+});
 
 const openLogIn = () => navigateTo("/signup");
 

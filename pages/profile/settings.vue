@@ -9,16 +9,13 @@
     <div class="flex justify-center space-x-10">
       <div class="flex flex-col items-start space-y-3">
         <img
-          v-if="!userImage"
           class="h-60 object-contain rounded-lg"
-          src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
-          alt=""
-        />
-
-        <img
-          v-else="userImage"
-          class="h-60 object-contain rounded-lg"
-          :src="`https://eihzdapuwwdmctwiskdb.supabase.co/storage/v1/object/public/images/${id}/${userImage}`"
+          :src="
+            user
+              ? `https://eihzdapuwwdmctwiskdb.supabase.co/storage/v1/object/public/images/${id}/${userImage}`
+              : 'https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg'
+          "
+          alt="user-image"
         />
 
         <div class="flex items-center justify-center">
@@ -89,6 +86,7 @@
   </div>
 
   <LoadingModal v-show="loading" />
+
   <StatusModal
     v-show="isStatusModalOpen"
     @close-status-modal="closeStatusModal"
@@ -99,7 +97,7 @@
 
 <script setup lang="ts">
 import { useGetUserData } from "~/stores/getUserData";
-import { usePutUserData } from "~/stores/putUserData";
+import { usePutUpdateUserData } from "~/stores/putUpdateUserData";
 import { useGetUserImage } from "~/stores/getUserImage";
 import { v4 as uuidv4 } from "uuid";
 
@@ -115,7 +113,7 @@ const id = userId.value?.id;
 const uuid = uuidv4();
 const store = useGetUserData();
 const user = ref(store.userData[0] || {});
-const storeUpdate = usePutUserData();
+const storeUpdate = usePutUpdateUserData();
 
 const image = useGetUserImage();
 const userImage = ref(image.userImage);
@@ -133,20 +131,46 @@ const closeStatusModal = () => {
   isStatusModalOpen.value = false;
 };
 
+// const updateUser = async () => {
+//   loading.value = true;
+//   try {
+//     await storeUpdate.updateUserAuth(userEmail.value, userPassword.value);
+//     await storeUpdate.updateUserTable(
+//       userId.value.id,
+//       userName.value,
+//       userEmail.value,
+//       userPassword.value
+//     );
+
+//     navigateTo("/confirm");
+//   } catch (error) {
+//     console.log(error);
+//     loading.value = false;
+//     isStatusModalOpen.value = true;
+//     authMessage.value = `${error}`;
+//     messageStatus.value = false;
+//   } finally {
+//     loading.value = false;
+//   }
+// };
+
 const updateUser = async () => {
   loading.value = true;
   try {
-    await storeUpdate.updateUserAuth(userEmail.value, userPassword.value);
-    await storeUpdate.updateUserTable(
-      userId.value.id,
-      userName.value,
-      userEmail.value,
-      userPassword.value
-    );
+    if (userName.value !== user.value.user_name) {
+      await storeUpdate.updateUserTable(userId.value.id, userName.value);
+      return;
+    }
 
-    isStatusModalOpen.value = true;
-    authMessage.value = "The data has been successfully updated";
-    messageStatus.value = true;
+    if (userEmail.value !== user.value.user_email || userPassword.value) {
+      await storeUpdate.updateUserAuth(userEmail.value, userPassword.value);
+      navigateTo("/confirm");
+    }
+
+    if (userPassword.value) {
+      await storeUpdate.updateUserAuth(userPassword.value);
+      navigateTo("/confirm");
+    }
   } catch (error) {
     console.log(error);
     loading.value = false;

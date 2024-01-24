@@ -1916,12 +1916,10 @@
 </template>
 
 <script setup lang="ts">
-const router = useRouter();
-
 definePageMeta({
   layout: "auth-layout",
 });
 
-const openCustomerPage = () => router.push("/signup");
-const openSellerPage = () => router.push("/seller");
+const openCustomerPage = () => navigateTo("/signup");
+const openSellerPage = () => navigateTo("/seller");
 </script>

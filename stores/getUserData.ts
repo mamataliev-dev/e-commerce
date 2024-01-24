@@ -13,8 +13,6 @@ export const useGetUserData = defineStore("get-user-data", () => {
       throw error;
     }
 
-    console.log(user.value.id);
-
     userData.value.push(data[0]);
     return userData;
   };

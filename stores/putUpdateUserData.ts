@@ -1,8 +1,8 @@
-export const usePutUserData = defineStore("put-user-data", () => {
+export const usePutUpdateUserData = defineStore("update-user-data", () => {
   const user = useSupabaseUser();
   const supabase = useSupabaseClient();
 
-  const updateUserAuth = async (newEmail: string, newPassword: string) => {
+  const updateUserAuth = async (newEmail?: string, newPassword?: string) => {
     const { error } = await supabase.auth.updateUser({
       email: newEmail,
       password: newPassword,
@@ -14,10 +14,10 @@ export const usePutUserData = defineStore("put-user-data", () => {
   };
 
   const updateUserTable = async (
-    userId: string,
-    userName: string,
-    userEmail: string,
-    userPassword: string
+    userId?: string,
+    userName?: string,
+    userEmail?: string,
+    userPassword?: string
   ) => {
     const { data, error } = await supabase
       .from("users")

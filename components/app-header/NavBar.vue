@@ -72,23 +72,18 @@
 
           <li>
             <NuxtLink to="/profile/orders">
-              <div v-if="!userImage" class="flex items-center space-x-2">
+              <div class="flex items-center space-x-2">
                 <img
                   class="h-8 object-contain rounded-lg"
-                  src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
+                  :src="
+                    user
+                      ? `https://eihzdapuwwdmctwiskdb.supabase.co/storage/v1/object/public/images/${id}/${userImage}`
+                      : 'https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg'
+                  "
                   alt=""
                 />
 
-                <span>Sign up</span>
-              </div>
-
-              <div v-else="userImage" class="flex items-center space-x-2">
-                <img
-                  class="h-8 object-contain rounded-lg"
-                  :src="`https://eihzdapuwwdmctwiskdb.supabase.co/storage/v1/object/public/images/${id}/${userImage}`"
-                />
-
-                <span>{{ userDisplayName }}</span>
+                <span>{{ user ? `${userDisplayName}` : "Sign up" }}</span>
               </div>
             </NuxtLink>
           </li>
@@ -101,11 +96,13 @@
 <script setup lang="ts">
 import { useGetUserData } from "~/stores/getUserData";
 import { useGetUserImage } from "~/stores/getUserImage";
+import { usePutAddUserDate } from "~/stores/putAddUserData";
 
 const searchProduct = () => {
   console.log("query");
 };
 
+const userData = usePutAddUserDate();
 const userId = useSupabaseUser();
 const id = userId.value?.id;
 const store = useGetUserData();
@@ -114,8 +111,6 @@ const userDisplayName = ref(user.value.user_name);
 
 const image = useGetUserImage();
 const userImage = ref(image.userImage);
-
-console.log(userId);
 
 watchEffect(() => {
   user.value = store.userData[0] || {};
@@ -128,5 +123,6 @@ onMounted(() => {
   user.value = store.userData[0];
   image.getUserImageUrl();
   userImage.value = image.userImage;
+  userData.addUserData();
 });
 </script>

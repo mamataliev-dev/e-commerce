@@ -64,26 +64,19 @@
   </div>
 
   <LoadingModal v-show="loading" />
-
-  <StatusModal
-    v-show="isStatusModalOpen"
-    @close-status-modal="closeStatusModal"
-    :message="authMessage"
-    :status="messageStatus"
-  />
 </template>
 
 <script setup lang="ts">
+import { usePutAddUserDate } from "~/stores/putAddUserData";
+
 definePageMeta({
   layout: "auth-layout",
 });
 
+const store = usePutAddUserDate();
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 
-let isStatusModalOpen = ref(false);
-let messageStatus = ref(true);
-let authMessage = ref("");
 let loading = ref(false);
 
 let userEmail = ref("");
@@ -96,15 +89,11 @@ let nameEmpty = ref(false);
 
 const openLogIn = () => navigateTo("/login");
 
-const closeStatusModal = (isOpen: boolean) => {
-  isStatusModalOpen.value = isOpen;
-};
-
-// watchEffect(() => {
-//   if (user.value) {
-//     navigateTo("/profile/settings");
-//   }
-// });
+watchEffect(() => {
+  if (user.value) {
+    navigateTo("/profile/settings");
+  }
+});
 
 const SignUp = async () => {
   loading.value = true;
@@ -136,15 +125,11 @@ const SignUp = async () => {
 
     if (error) {
       throw error;
-    } else {
-      isStatusModalOpen.value = true;
-      authMessage.value = "Successfully, check your email for confirmation";
-      messageStatus.value = true;
-
-      addNewUser(userName.value, userEmail.value, userPassword.value);
     }
 
-    // navigateTo("/confirm");
+    store.saveUserData(userName.value, userEmail.value, userPassword.value);
+
+    navigateTo("/confirm");
 
     userName.value = "";
     userEmail.value = "";
@@ -153,23 +138,6 @@ const SignUp = async () => {
     console.error(error);
   } finally {
     loading.value = false;
-  }
-};
-
-const addNewUser = async (name: string, email: string, password: string) => {
-  const { data, error } = await supabase.from("users").insert([
-    {
-      user_id: user.value?.id,
-      user_name: name,
-      user_email: email,
-      user_password: password,
-    },
-  ]);
-
-  console.log("ID: ");
-  console.log(user.value?.id);
-  if (error) {
-    console.error("Ошибка при вставке:", error.message);
   }
 };
 </script>

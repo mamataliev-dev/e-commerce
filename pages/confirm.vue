@@ -13,10 +13,13 @@
 </template>
 
 <script setup lang="ts">
+import { usePutAddUserDate } from "~/stores/putAddUserData";
+
 definePageMeta({
   layout: "auth-layout",
 });
 
+const store = usePutAddUserDate();
 const user = useSupabaseUser();
 
 watch(
@@ -28,4 +31,8 @@ watch(
   },
   { immediate: true }
 );
+
+onMounted(() => {
+  store.showUserDate;
+});
 </script>
