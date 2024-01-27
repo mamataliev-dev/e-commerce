@@ -76,14 +76,14 @@
                 <img
                   class="h-8 object-contain rounded-lg"
                   :src="
-                    user
+                    userImage
                       ? `https://eihzdapuwwdmctwiskdb.supabase.co/storage/v1/object/public/images/${id}/${userImage}`
                       : 'https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg'
                   "
                   alt=""
                 />
 
-                <span>{{ user ? `${userDisplayName}` : "Sign up" }}</span>
+                <span>{{ userId ? `${userDisplayName}` : "Sign up" }}</span>
               </div>
             </NuxtLink>
           </li>

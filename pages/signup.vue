@@ -1,9 +1,13 @@
 <template>
-  <div class="wrapper">
-    <div class="m-auto my-20 bg-white rounded-lg w-[500px] px-4 py-6">
+  <div class="wrapper table">
+    <div
+      class="my-20 mx-auto bg-white rounded-lg w-[350px] md:w-[500px] px-4 py-6"
+    >
       <div class="flex items-center justify-center">
         <div class="w-full bg-gray h-0.5"></div>
-        <h1 class="text-3xl font-bold text-center w-full">Sign Up</h1>
+        <h1 class="text-2xl md:text-3xl font-bold text-center w-full">
+          Sign Up
+        </h1>
         <div class="w-full bg-gray h-0.5"></div>
       </div>
 

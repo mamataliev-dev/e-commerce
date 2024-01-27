@@ -1,8 +1,12 @@
 <template>
-  <AppHeaderNavBar />
-  <AppHeaderAppCategories />
+  <div class="min-h-screen flex flex-col">
+    <AppHeaderNavBar />
+    <AppHeaderAppCategories />
 
-  <slot />
+    <main class="flex-1">
+      <slot />
+    </main>
 
-  <AppFooter />
+    <AppFooter />
+  </div>
 </template>

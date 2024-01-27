@@ -9,18 +9,17 @@ definePageMeta({
   layout: "category-layout",
 });
 
-let categoryId: any;
+let categoryId = null;
 
 if (process.client) {
   const categoryId = localStorage.getItem("category");
-  console.log(categoryId);
+}
+
+if (process.client) {
+  categoryId = localStorage.getItem("category");
 }
 
 useHead({
   title: `Category | ${categoryId}`,
 });
-
-if (process.client) {
-  categoryId = localStorage.getItem("category");
-}
 </script>

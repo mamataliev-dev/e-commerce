@@ -11,7 +11,7 @@
         <img
           class="h-60 object-contain rounded-lg"
           :src="
-            user
+            userImage
               ? `https://eihzdapuwwdmctwiskdb.supabase.co/storage/v1/object/public/images/${id}/${userImage}`
               : 'https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg'
           "
@@ -98,7 +98,7 @@
 <script setup lang="ts">
 import { useGetUserData } from "~/stores/getUserData";
 import { usePutUpdateUserData } from "~/stores/putUpdateUserData";
-import { useGetUserImage } from "~/stores/getUserImage";
+import { usePutAddUserDate } from "~/stores/putAddUserData";
 import { v4 as uuidv4 } from "uuid";
 
 definePageMeta({
@@ -131,29 +131,6 @@ const closeStatusModal = () => {
   isStatusModalOpen.value = false;
 };
 
-// const updateUser = async () => {
-//   loading.value = true;
-//   try {
-//     await storeUpdate.updateUserAuth(userEmail.value, userPassword.value);
-//     await storeUpdate.updateUserTable(
-//       userId.value.id,
-//       userName.value,
-//       userEmail.value,
-//       userPassword.value
-//     );
-
-//     navigateTo("/confirm");
-//   } catch (error) {
-//     console.log(error);
-//     loading.value = false;
-//     isStatusModalOpen.value = true;
-//     authMessage.value = `${error}`;
-//     messageStatus.value = false;
-//   } finally {
-//     loading.value = false;
-//   }
-// };
-
 const updateUser = async () => {
   loading.value = true;
   try {
@@ -162,14 +139,25 @@ const updateUser = async () => {
       return;
     }
 
-    if (userEmail.value !== user.value.user_email || userPassword.value) {
+    if (
+      userEmail.value !== user.value.user_email ||
+      userPassword.value !== user.value.user_password
+    ) {
       await storeUpdate.updateUserAuth(userEmail.value, userPassword.value);
-      navigateTo("/confirm");
+      await storeUpdate.updateUserTable(
+        userId.value.id,
+        userName.value,
+        userPassword.value
+      );
+
+      return navigateTo("/email-confirm");
     }
 
     if (userPassword.value) {
       await storeUpdate.updateUserAuth(userPassword.value);
-      navigateTo("/confirm");
+      await storeUpdate.updateUserTable(userId.value.id, userPassword.value);
+
+      return navigateTo("/email-confirm");
     }
   } catch (error) {
     console.log(error);
@@ -189,10 +177,6 @@ const logOut = async () => {
 
     if (error) {
       throw error;
-    } else {
-      isStatusModalOpen.value = true;
-      authMessage.value = "You have successfully logged out of the account";
-      messageStatus.value = true;
     }
 
     navigateTo("/");
@@ -221,8 +205,6 @@ const uploadImage = async (event: any) => {
       messageStatus.value = true;
       authMessage.value = "The image has been successfully exposed";
     }
-
-    console.log(data);
   } catch (error) {
     console.error(error);
   } finally {
@@ -230,12 +212,17 @@ const uploadImage = async (event: any) => {
   }
 };
 
+loading.value = true;
 watchEffect(() => {
   user.value = store.userData[0] || {};
   userImage.value = image.userImage;
   userName.value = user.value.user_name;
   userEmail.value = user.value.user_email;
   userPassword.value = user.value.user_password;
+
+  if (store.userData.length > 0) {
+    loading.value = false;
+  }
 });
 
 onMounted(() => {
@@ -243,5 +230,6 @@ onMounted(() => {
   image.getUserImageUrl();
   user.value = store.userData[0];
   userImage.value = image.userImage;
+  localStorage.removeItem("user");
 });
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="m-auto my-20 bg-white rounded-lg w-[500px] px-4 py-6">
+    <div class="my-20 mx-auto bg-white rounded-lg w-[500px] px-4 py-6">
       <div class="flex items-center justify-center">
         <div class="w-full bg-gray h-0.5"></div>
         <h1 class="text-3xl font-bold text-center w-full">Log In</h1>

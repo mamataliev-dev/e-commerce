@@ -1,9 +1,14 @@
 {
-  "id": "868597",
+  "id": "uuid",
   "name": "Смартфон Samsung Galaxy",
+  "brand": "Samsung",
   "description": "Детальное описание смартфона Samsung Galaxy, включая особенности, технические характеристики и преимущества.",
   "price": 699,
+  "discount": "20",
+  "purchases": "200",
   "category": "Смартфоны",
+  "colors": ["red", "blue", "pink"],
+  "storages": ["128GB", "256GB", "1T"],
   "images": [
     "url_to_main_image.jpg",
     "url_to_additional_image1.jpg",
@@ -16,7 +21,8 @@
     "storage": "128 GB",
     "camera": "12 MP + 64 MP + 12 MP, фронтальная камера 10 MP",
     "battery": "4500 mAh",
-    "os": "Android"
+    "os": "Android",
+    "connectors": ["ucb-c"]
   },
   "ratings": {
     "average": 4.6,
@@ -25,14 +31,11 @@
   "reviews": [
     {
       "post_id": "123aljsf",
-      "user_id": "12947jif",
+      "user_id": "12947jifas2fas",
       "created_at": "13.10.2024",
-      "body": "test"
+      "body": "review text"
     }
   ],
-  "availability": {
-    "inStock": true,
-    "quantity": 50
-  },
+  "quantity": 50,
   "tags": ["смартфон", "Samsung", "Galaxy", "Android"]
 }
