@@ -1,0 +1,99 @@
+[
+  {
+    "id": "1",
+    "title": "Apple iPhone 15 Pro",
+    "brand": "Apple",
+    "description": "Featuring new contoured edges, a new action button, a powerful camera upgrade, and a durable and lightweight titanium body, A17 Pro brings next-level performance and mobile gaming. CUPERTINO, CALIFORNIA Apple today introduced iPhone 15 Pro and iPhone 15 Pro Max, crafted from durable yet lightweight aerospace-grade titanium and the lightest Apple Pro models ever. The new design also features contoured edges and a customizable action button, allowing users to personalize their iPhone experience. Powerful camera upgrades include the equivalent of seven professional lenses with outstanding image quality, including an improved 48-megapixel main camera system that now supports the new 24-megapixel ultra-high definition standard, next-generation portraits with focus and depth control, at night. improvements and much more. Smart HDR mode and an all-new 5x Telephoto lens, only on iPhone 15 Pro Max. The A17 Pro brings a new level of gaming experience and professional performance. The new USB C connector supports USB 3 speeds (up to 20 times faster than USB 2) and enables powerful professional workflows never before possible, plus new video formats.1 And satellite roadside assistance. As a result, the iPhone 15 Pro lineup leverages Apple's innovative satellite infrastructure to connect and assist users when they encounter vehicle issues outside of the network. iPhone 15 Pro and iPhone 15 Pro Max are available in four stunning new colors: Titanium Black, Titanium White, Titanium Blue and Natural Titanium.",
+    "price": 999,
+    "discount": 2,
+    "category": "phones",
+    "colors": [
+      "Natural Titanium",
+      "Blue Titanium",
+      "White Titanium",
+      "Black Titanium"
+    ],
+    "preview": "https://brostore.uz/cdn/shop/files/4_1220x_crop_center.png?v=1698329693",
+    "images": [
+      {
+        "black": [
+          "https://brostore.uz/cdn/shop/files/1_1220x_crop_center.png?v=1698329574",
+          "https://brostore.uz/cdn/shop/files/5_1220x_crop_center.png?v=1698329584",
+          "https://brostore.uz/cdn/shop/files/9_1220x_crop_center.png?v=1698329593",
+          "https://brostore.uz/cdn/shop/files/13_1220x_crop_center.png?v=1698329605"
+        ]
+      },
+      {
+        "white": [
+          "https://brostore.uz/cdn/shop/files/2_1220x_crop_center.png?v=1698329618",
+          "https://brostore.uz/cdn/shop/files/6_1220x_crop_center.png?v=1698329628",
+          "https://brostore.uz/cdn/shop/files/10_1220x_crop_center.png?v=1698329638",
+          "https://brostore.uz/cdn/shop/files/14_1220x_crop_center.png?v=1698329645"
+        ]
+      },
+      {
+        "blue": [
+          "https://brostore.uz/cdn/shop/files/3_86d2dec9-fd70-4ccf-9e1a-d3aed6a8be6c_1220x_crop_center.png?v=1698329657",
+          "https://brostore.uz/cdn/shop/files/7_4e825d03-6a9f-4522-86fc-2cf1b91185cd_1220x_crop_center.png?v=1698329664",
+          "https://brostore.uz/cdn/shop/files/11_db939fa2-246b-4284-83bc-a6cb7c9e69be_1220x_crop_center.png?v=1698329674",
+          "https://brostore.uz/cdn/shop/files/15_ab79b5dd-8f65-4872-84aa-f91fc5d78f20_1220x_crop_center.png?v=1698329679"
+        ]
+      },
+      {
+        "gray": [
+          "https://brostore.uz/cdn/shop/files/4_1220x_crop_center.png?v=1698329693",
+          "https://brostore.uz/cdn/shop/files/8_1220x_crop_center.png?v=1698329700",
+          "https://brostore.uz/cdn/shop/files/12_1220x_crop_center.png?v=1698329718",
+          "https://brostore.uz/cdn/shop/files/16_1220x_crop_center.png?v=1698329724"
+        ]
+      }
+    ],
+    "storages": ["128GB", "256GB", "512GB", "1T"],
+    "ratings": {
+      "average": 4.6,
+      "totalReviews": 120
+    },
+    "tags": ["phones", "iphone", "apple", "ios"]
+  },
+  {
+    "id": "2",
+    "title": "Samsung Galaxy S24 Ultra Smartphone",
+    "brand": "Samsung",
+    "description": "Welcome to the era of mobile AI. Discover a high level of creativity and productivity with the most important device in your life — the Samsung Galaxy S24 Ultra smartphone. Introducing the Galaxy S24 Ultra, the perfect form of the Galaxy Ultra smartphone with a 6.8-inch screen.The Galaxy S24 Ultra, with its innovative 200 MP camera and built-in artificial intelligence, sets the standard for shooting quality. The Pro Visual processor recognizes objects, improves color tone, reduces noise and emphasizes details. Enjoy every picture taken on the Galaxy S24 Ultra. The Corning Gorilla Armor protective coating reduces reflections and improves image clarity even in the sun. And Vision Booster technology enhances contrast and color reproduction, and it's really impressive.The Ultra battery with huge capacity and increased energy efficiency will add strength at the most crucial moment — for example, in an epic boss battle for which you have been preparing for so long.",
+    "price": 1200,
+    "discount": 0,
+    "category": "phones",
+    "colors": ["Titanium Black", "Titanium Gray"],
+    "preview": "https://brostore.uz/cdn/shop/files/s3_1220x_crop_center.png?v=1705743677",
+    "images": [
+      {
+        "black": [
+          "https://brostore.uz/cdn/shop/files/s3_1220x_crop_center.png?v=1705743677",
+          "https://brostore.uz/cdn/shop/files/black1_fce6326f-8b60-44ae-a85b-e32deec28033_1220x_crop_center.png?v=1705746881",
+          "https://brostore.uz/cdn/shop/files/black3_9aa3d520-1a21-45fe-bb20-3b4730be0765_1220x_crop_center.png?v=1705746881",
+          "https://brostore.uz/cdn/shop/files/black2_d8713876-95c7-4915-aaba-4241af2e805f_1220x_crop_center.png?v=1705746881",
+          "https://brostore.uz/cdn/shop/files/black4_8158bda6-d384-410a-8345-f9a6b9949d5f_1220x_crop_center.png?v=1705746881",
+          "https://brostore.uz/cdn/shop/files/rb_1220x_crop_center.png?v=1705748751",
+          "https://brostore.uz/cdn/shop/files/black6_1220x_crop_center.png?v=1705748751"
+        ]
+      },
+      {
+        "gray": [
+          "https://brostore.uz/cdn/shop/files/ff3_1_1220x_crop_center.png?v=1705748751",
+          "https://brostore.uz/cdn/shop/files/gray1_1220x_crop_center.png?v=1705748751",
+          "https://brostore.uz/cdn/shop/files/gray2_1220x_crop_center.png?v=1705748751",
+          "https://brostore.uz/cdn/shop/files/gray3_1220x_crop_center.png?v=1705748751",
+          "https://brostore.uz/cdn/shop/files/gray4_1220x_crop_center.png?v=1705748751",
+          "https://brostore.uz/cdn/shop/files/rg_1220x_crop_center.png?v=1705748751",
+          "https://brostore.uz/cdn/shop/files/gray6_1220x_crop_center.png?v=1705748497"
+        ]
+      }
+    ],
+    "storages": ["256GB", "512GB"],
+    "ratings": {
+      "average": 3.6,
+      "totalReviews": 90
+    },
+    "tags": ["phones", "samsung", "galaxy", "android"]
+  }
+]

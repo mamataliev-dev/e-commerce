@@ -98,7 +98,6 @@
 <script setup lang="ts">
 import { useGetUserData } from "~/stores/getUserData";
 import { usePutUpdateUserData } from "~/stores/putUpdateUserData";
-import { usePutAddUserDate } from "~/stores/putAddUserData";
 import { v4 as uuidv4 } from "uuid";
 
 definePageMeta({

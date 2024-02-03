@@ -9,11 +9,7 @@ definePageMeta({
   layout: "category-layout",
 });
 
-let categoryId = null;
-
-if (process.client) {
-  const categoryId = localStorage.getItem("category");
-}
+let categoryId: any = null;
 
 if (process.client) {
   categoryId = localStorage.getItem("category");
